@@ -43,4 +43,4 @@ for dup, c in sorted_dups:
     if dups[dup] == min:
         min = dup
     print(dup, round(c, 1))
-print('\nEarliest indicator is', min)
+input('\nEarliest indicator is {v}\n'.format(v=min))
