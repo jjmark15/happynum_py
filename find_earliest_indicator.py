@@ -33,11 +33,14 @@ for n in range(1, r + 1):
         else:
             dups[dup] = new[dup]/r
 
+# list that has dups in sorted order
+sorted_dups = sorted(dups.items(), key=operator.itemgetter(1))
+
 print('For a number range of {n}:\n'.format(n=r))
 print('Indicator vs average iterations until hit:')
 min = min(dups.values())
-for dup in dups.keys():
+for dup, c in sorted_dups:
     if dups[dup] == min:
         min = dup
-    print(dup, round(dups[dup],1))
+    print(dup, round(c, 1))
 print('\nEarliest indicator is', min)
