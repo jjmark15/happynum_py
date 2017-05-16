@@ -22,22 +22,27 @@ def ishappy(n):
             break
 
 
-def main():
-    print('Distinct Happy Number Range Counter\n')
+def get_happy(r):
     happy_numbers = []
     count = 0
-    # define range
-    r2 = num_input('Number Range: ')
-    time_start = clock() # start timer
 
     # cycle through range
-    for i in range(1, r2 + 1):
+    for i in range(1, r + 1):
         # sort number digit order
         i = int(''.join(sorted([d for d in str(i)])))
         if i not in happy_numbers: # check is distinct
             if ishappy(i):
                 happy_numbers.append(i)
                 count += 1
+    return count, happy_numbers
+
+
+def main():
+    print('Distinct Happy Number Range Counter\n')
+    # define range
+    r = num_input('Number Range: ')
+    time_start = clock() # start timer
+    count, nums = get_happy(r)
 
     time_end = clock() # end timer
     time_delta = time_end - time_start
@@ -45,8 +50,10 @@ def main():
     print('Calc Time: {} s'.format(round(time_delta,5)))
     p = input('See number list? (y): ')
     if p == 'y':
-        for n in happy_numbers:
+        for n in nums:
             print(n)
         input()
 
-main()
+
+if __name__ == "__main__":
+    main()
