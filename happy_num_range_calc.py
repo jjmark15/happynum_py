@@ -14,7 +14,7 @@ def ishappy(n):
     while True:
         ss = square_sum(ss)
         # if ss == 89 or ss == 0: # either of these indicates not happy
-        if ss in [89, 145, 42, 37, 58, 20, 4, 16]: # this turns out to be faster
+        if ss in (89, 145, 42, 37, 58, 20, 4, 16): # this turns out to be faster
             return False
             break
         elif ss == 1: # therefore happy
