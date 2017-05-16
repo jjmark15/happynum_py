@@ -22,7 +22,7 @@ def ishappy(n):
             break
 
 
-def get_happy(r):
+def get_dist_happy(r):
     happy_numbers = []
     count = 0
 
