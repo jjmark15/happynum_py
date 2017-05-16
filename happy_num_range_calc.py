@@ -22,21 +22,27 @@ def ishappy(n):
             break
 
 
-def main():
-    print('Happy Number Range Counter\n')
+def get_happy(r):
     count = 0
-    # define range
-    r2 = num_input('Number Range: ')
-    time_start = clock() # start timer
 
-    happy_numbers = (n for n in range(1, r2+1) if ishappy(n))
+    happy_numbers = (n for n in range(1, r+1) if ishappy(n))
     for n in happy_numbers:
         count += 1
+    return count
+
+
+def main():
+    print('Happy Number Range Counter\n')
+    # define range
+    r = num_input('Number Range: ')
+    time_start = clock() # start timer
+    count = get_happy(r)
 
     time_end = clock() # end timer
     time_delta = time_end - time_start
     print('Count Total: {count}'.format(count=count))
     print('Calc Time: {} s'.format(round(time_delta,5)))
+    input()
 
-main()
-input()
+if __name__ == "__main__":
+    main()
