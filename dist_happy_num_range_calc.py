@@ -42,7 +42,7 @@ def main():
     # define range
     r = num_input('Number Range: ')
     time_start = clock() # start timer
-    count, nums = get_happy(r)
+    count, nums = get_dist_happy(r)
 
     time_end = clock() # end timer
     time_delta = time_end - time_start
