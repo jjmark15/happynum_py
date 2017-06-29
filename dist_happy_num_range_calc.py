@@ -10,7 +10,7 @@ def square_sum(n):
 
 
 def ishappy(n):
-    ss = square_sum(n)
+    ss = n
     while True:
         ss = square_sum(ss)
         # if ss == 89 or ss == 0: # either of these indicates not happy

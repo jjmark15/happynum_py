@@ -22,7 +22,6 @@ def ishappy(n):
 
 
 dups = {4: 0, 16: 0, 20: 0, 37: 0, 42: 0, 58: 0, 89: 0, 145: 0}
-test = []
 r = 100 # number range
 for n in range(1, r + 1):
     new = ishappy(n)
