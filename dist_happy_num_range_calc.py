@@ -1,5 +1,4 @@
 from time import clock
-from mypackage.mymodule import num_input
 
 
 def is_first_it(n):
@@ -39,16 +38,16 @@ def get_dist_happy(r):
 
 def main():
     print('Distinct Happy Number Range Counter\n')
-    r = num_input('Number Range: ')  # define range
+    r = int(1E06)
     time_start = clock()  # start timer
     count = get_dist_happy(r)
 
     time_end = clock()  # end timer
     time_delta = time_end - time_start
     print('Count Total: {count}'.format(count=count))
-    print('Calc Time: {}s'.format(round(time_delta, 5)))
-    input()
+    print('Calc Time: {}s'.format(round(time_delta, 2)))
 
 
 if __name__ == "__main__":
     main()
+    input()
