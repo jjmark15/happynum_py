@@ -39,6 +39,7 @@ def get_dist_happy(r):
 def main():
     print('Distinct Happy Number Range Counter\n')
     r = int(1E06)
+    print('Range:', r)
     time_start = clock()  # start timer
     count = get_dist_happy(r)
 
