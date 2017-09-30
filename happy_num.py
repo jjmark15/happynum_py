@@ -29,7 +29,7 @@ def ishappy(n):
 
 def get_dist_happy(r):
     count = 0
-    range_gen = (i for i in range(1, r) if is_first_it(i)
+    range_gen = (i for i in range(1, r + 1) if is_first_it(i)
         )  # save memory with generator
     for i in range_gen:
         if ishappy(i):
@@ -38,15 +38,18 @@ def get_dist_happy(r):
 
 
 def main():
+    # set up argument parser
     parser = argparse.ArgumentParser()
     parser.add_argument('-r', type=int, default=1E06,
                         help='Range to be calculated?')
     args = parser.parse_args()
 
+    # start main script
     print('Distinct Happy Number Range Counter\n')
     r = int(args.r)
     print('Range:', r)
     time_start = clock()  # start timer
+
     count = get_dist_happy(r)
 
     time_end = clock()  # end timer
