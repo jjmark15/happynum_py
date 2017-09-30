@@ -1,4 +1,5 @@
 from time import clock
+import argparse
 
 
 def is_first_it(n):
@@ -37,8 +38,13 @@ def get_dist_happy(r):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-r', type=int, default=1E06,
+                        help='Range to be calculated?')
+    args = parser.parse_args()
+
     print('Distinct Happy Number Range Counter\n')
-    r = int(1E06)
+    r = int(args.r)
     print('Range:', r)
     time_start = clock()  # start timer
     count = get_dist_happy(r)
@@ -51,4 +57,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    input()
+    input('\nEnter to close...')
