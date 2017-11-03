@@ -1,5 +1,6 @@
 from time import clock
 import argparse
+from progress import progress
 
 
 def is_first_it(n):
@@ -32,8 +33,10 @@ def get_dist_happy(r):
     range_gen = (i for i in range(1, r + 1)
                  if is_first_it(i))  # save memory with generator
     for i in range_gen:
+        progress(i, r, "Checking for happy distinct numbers")
         if ishappy(i):
             count += 1
+    print()
     return count
 
 
