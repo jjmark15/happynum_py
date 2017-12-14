@@ -27,12 +27,14 @@ def ishappy(n):
             return True
 
 
-def get_dist_happy(r):
+def get_dist_happy(r, verbose=False):
     count = 0
     range_gen = (i for i in range(1, r + 1)
                  if is_first_it(i))  # save memory with generator
     for i in range_gen:
         if ishappy(i):
+            if verbose is True:
+                print(i)
             count += 1
     return count
 
@@ -42,6 +44,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-r', type=int, default=1E06, help='Range to be calculated?')
+    parser.add_argument(
+        '-v', default=False, action='store_true', help="Verbose?"
+    )
     args = parser.parse_args()
 
     # start main script
@@ -50,7 +55,7 @@ def main():
     print('Range:', r)
     time_start = clock()  # start timer
 
-    count = get_dist_happy(r)
+    count = get_dist_happy(r, args.v)
 
     time_end = clock()  # end timer
     time_delta = time_end - time_start
