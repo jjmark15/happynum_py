@@ -39,7 +39,7 @@ def get_dist_happy(r, verbose=False):
     return count
 
 
-def main():
+def get_args():
     # set up argument parser
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -47,7 +47,16 @@ def main():
     parser.add_argument(
         '-v', default=False, action='store_true', help="Verbose?"
     )
-    args = parser.parse_args()
+    return parser.parse_args()
+
+
+def format_dec(n):
+    a = '%E' % n
+    return a.split('E')[0].rstrip('0').rstrip('.') + 'E' + a.split('E')[1]
+
+
+def main():
+    args = get_args()
 
     # start main script
     print('Distinct Happy Number Range Counter\n')
@@ -60,7 +69,7 @@ def main():
     time_end = clock()  # end timer
     time_delta = time_end - time_start
     print('Count Total: {count}'.format(count=count))
-    print('Calc Time: {}s'.format(round(time_delta, 2)))
+    print('Calc Time: {}s'.format(format_dec(time_delta)))
 
 
 if __name__ == "__main__":
