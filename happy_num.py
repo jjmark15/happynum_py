@@ -53,8 +53,11 @@ def get_args():
 
 
 def format_dec(n):
-    a = '%E' % n
-    return a.split('E')[0].rstrip('0').rstrip('.') + 'E' + a.split('E')[1]
+    a, b = ('%E' % n).split('E')
+    out = str(round(float(a.rstrip('0').rstrip('.')), 3))
+    if b != '+00':
+        out += 'e' + b
+    return out
 
 
 def main():
