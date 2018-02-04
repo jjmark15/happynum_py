@@ -43,11 +43,13 @@ def get_args():
     # set up argument parser
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '-r', type=int, default=1E06, help='Range to be calculated?')
+        '-r', type=float, default=1E06, help='Range to be calculated?')
     parser.add_argument(
         '-v', default=False, action='store_true', help="Verbose?"
     )
-    return parser.parse_args()
+    args = parser.parse_args()
+    args.r = int(args.r)
+    return args
 
 
 def format_dec(n):
@@ -60,11 +62,10 @@ def main():
 
     # start main script
     print('Distinct Happy Number Range Counter\n')
-    r = int(args.r)
-    print('Range:', r)
+    print('Range:', args.r)
     time_start = clock()  # start timer
 
-    count = get_dist_happy(r, args.v)
+    count = get_dist_happy(args.r, args.v)
 
     time_end = clock()  # end timer
     time_delta = time_end - time_start
