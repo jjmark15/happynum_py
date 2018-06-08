@@ -1,16 +1,9 @@
 def is_first_it(n):
-    ascending = int("".join(sorted(str(n))))
-    if n == ascending:
-        return True
-    else:
-        return False
+    return n == int("".join(sorted(str(n))))
 
 
 def square_sum(n):
-    ss = 0
-    for digit in str(n):
-        ss += int(digit)**2
-    return ss
+    return sum([int(d)**2 for d in str(n)])
 
 
 def ishappy(n):
