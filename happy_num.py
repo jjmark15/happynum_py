@@ -1,3 +1,7 @@
+from numba import jit
+
+
+@jit
 def is_first_iteration(n):
     return n == int("".join(sorted(str(n))))
 
@@ -6,6 +10,7 @@ def square_sum(n):
     return sum([int(d)**2 for d in str(n)])
 
 
+@jit
 def ishappy(n):
     unhappy_markers = [89, 145, 42, 37, 58, 20, 4, 16]
     ss = n
