@@ -1,6 +1,7 @@
 from time import clock
 import argparse
 from happy_num import get_dist_happy
+import chalk
 
 
 def get_args():
@@ -28,7 +29,7 @@ def main():
     args = get_args()
 
     # start main script
-    print('Distinct Happy Number Range Counter\n')
+    print(chalk.red('Distinct Happy Number Range Counter\n'))
     print('Range:', args.r)
     time_start = clock()  # start timer
 
