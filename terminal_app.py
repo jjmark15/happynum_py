@@ -3,6 +3,9 @@ import argparse
 from happy_num import get_dist_happy
 import chalk
 
+from colorama import init
+init()
+
 
 def get_args():
     # set up argument parser

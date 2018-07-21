@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 pychalk = "*"
+colorama = "*"
 
 [dev-packages]
 "flake8" = "*"
