@@ -32,16 +32,16 @@ def main():
     args = get_args()
 
     # start main script
-    print(chalk.red('Distinct Happy Number Range Counter\n'))
-    print('Range:', args.r)
+    print(chalk.green('Distinct Happy Number Range Counter\n'))
+    print('Range:', chalk.red(args.r))
     time_start = clock()  # start timer
 
     count = get_dist_happy(args.r, args.v)
 
     time_end = clock()  # end timer
     time_delta = time_end - time_start
-    print('Count Total: {count}'.format(count=count))
-    print('Calc Time: {}s'.format(format_dec(time_delta)))
+    print('Count Total: {count}'.format(count=chalk.cyan(count)))
+    print('Calc Time (s): {}'.format(chalk.magenta(format_dec(time_delta))))
 
 
 if __name__ == "__main__":
