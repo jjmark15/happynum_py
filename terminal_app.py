@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 from time import clock
 import argparse
 from happy_num import get_dist_happy
