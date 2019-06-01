@@ -8,10 +8,11 @@ pychalk = "*"
 colorama = "*"
 
 [dev-packages]
-"flake8" = "*"
+yapf = "*"
+flake8 = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
 
 [scripts]
 main = "python terminal_app.py"
