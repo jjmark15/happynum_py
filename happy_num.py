@@ -1,5 +1,12 @@
 def is_first_iteration(n):
-    return n == int("".join(sorted(str(n))))
+    prev = "0"
+
+    for (i, curr) in enumerate(str(n)):
+        if i > 0:
+            if prev > curr:
+                return False
+        prev = curr
+    return True
 
 
 def square_sum(n):
