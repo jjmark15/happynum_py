@@ -44,6 +44,6 @@ def get_dist_happy(r: int, verbose: bool = False) -> int:
         if is_happy(i):
             if verbose:
                 print(i)
-        count += 1
+            count += 1
 
     return count
