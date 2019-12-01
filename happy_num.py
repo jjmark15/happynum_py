@@ -1,7 +1,8 @@
 from math import pow
+from typing import List, Iterator
 
 
-def is_first_iteration(n: int):
+def is_first_iteration(n: int) -> bool:
     prev: str = "0"
 
     for (i, curr) in enumerate(str(n)):
@@ -12,33 +13,37 @@ def is_first_iteration(n: int):
     return True
 
 
-def square_sum(n: int):
-    ss = 0
-    val = 0 + n
+def square_sum(n: int) -> int:
+    ss: float = 0
+    val: int = 0 + n
 
     while val > 0:
         ss += pow((val % 10), 2)
-        val: int = int(val/10)
-    return ss
+        val = int(val / 10)
+    return int(ss)
 
 
-def ishappy(n: int):
-    unhappy_markers = [89, 145, 42, 37, 58, 20, 4, 16]
-    ss = n
+def is_happy(n: int) -> bool:
+    unhappy_markers: List[int] = [89, 145, 42, 37, 58, 20, 4, 16]
+    ss: int = n
+
     while True:
-        ss = square_sum(ss)
+        ss = int(square_sum(ss))
         if ss in unhappy_markers:  # definitely not happy
             return False
         elif ss == 1:  # therefore happy
             return True
 
 
-def get_dist_happy(r: int, verbose: bool = False):
-    count = 0
-    range_gen = (i for i in range(1, r + 1)
-                 if is_first_iteration(i))  # save memory with generator
+def get_dist_happy(r: int, verbose: bool = False) -> int:
+    count: int = 0
+    range_gen: Iterator[int] = (i for i in range(1, r + 1)
+                                if is_first_iteration(i))  # save memory with generator
+
     for i in range_gen:
-        if ishappy(i):
-            print(i) if verbose else 0
+        if is_happy(i):
+            if verbose:
+                print(i)
             count += 1
+
     return count
