@@ -1,47 +1,50 @@
 #! /usr/bin/env python
 
-from time import perf_counter
 import argparse
-from happy_num import get_dist_happy
+from argparse import Namespace, ArgumentParser
+from time import perf_counter
+
 import chalk
+from colorama import init as init_colorama
 
-from colorama import init
-init()
+from happy_num import get_dist_happy
+
+init_colorama()
 
 
-def get_args():
+def get_args() -> Namespace:
     # set up argument parser
-    parser = argparse.ArgumentParser()
+    parser: ArgumentParser = argparse.ArgumentParser()
     parser.add_argument(
         '-r', type=float, default=1E06, help='Range to be calculated?')
     parser.add_argument(
         '-v', default=False, action='store_true', help="Verbose?"
     )
-    args = parser.parse_args()
+    args: Namespace = parser.parse_args()
     args.r = int(args.r)
     return args
 
 
-def format_dec(n):
+def format_dec(n: float) -> str:
     a, b = ('%E' % n).split('E')
-    out = str(round(float(a.rstrip('0').rstrip('.')), 3))
+    out: str = str(round(float(a.rstrip('0').rstrip('.')), 3))
     if b != '+00':
         out += 'e' + b
     return out
 
 
-def main():
-    args = get_args()
+def main() -> None:
+    args: Namespace = get_args()
 
     # start main script
     print(chalk.green('Distinct Happy Number Range Counter\n'))
     print('Range:', chalk.red(args.r))
-    time_start = perf_counter()  # start timer
+    time_start: float = perf_counter()  # start timer
 
-    count = get_dist_happy(args.r, args.v)
+    count: int = get_dist_happy(args.r, args.v)
 
-    time_end = perf_counter()  # end timer
-    time_delta = time_end - time_start
+    time_end: float = perf_counter()  # end timer
+    time_delta: float = time_end - time_start
     print('Count Total: {count}'.format(count=chalk.cyan(count)))
     print('Calc Time (s): {}'.format(chalk.magenta(format_dec(time_delta))))
 
