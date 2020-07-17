@@ -15,11 +15,10 @@ init_colorama()
 def get_args() -> Namespace:
     # set up argument parser
     parser: ArgumentParser = argparse.ArgumentParser()
-    parser.add_argument(
-        '-r', type=float, default=1E06, help='Range to be calculated?')
-    parser.add_argument(
-        '-v', default=False, action='store_true', help="Verbose?"
-    )
+    parser.add_argument('-r',
+                        type=float,
+                        default=1E06,
+                        help='Range to be calculated?')
     args: Namespace = parser.parse_args()
     args.r = int(args.r)
     return args
@@ -41,7 +40,7 @@ def main() -> None:
     print('Range:', chalk.red(args.r))
     time_start: float = perf_counter()  # start timer
 
-    count: int = get_dist_happy(args.r, args.v)
+    count: int = get_dist_happy(args.r)
 
     time_end: float = perf_counter()  # end timer
     time_delta: float = time_end - time_start

@@ -35,15 +35,9 @@ def is_happy(n: int) -> bool:
             return True
 
 
-def get_dist_happy(r: int, verbose: bool = False) -> int:
+def get_dist_happy(r: int) -> int:
     count: int = 0
-    range_gen: Iterator[int] = (i for i in range(1, r + 1)
-                                if is_first_iteration(i))  # save memory with generator
+    happy_nums: Iterator[int] = (1 for i in range(1, r + 1)
+                                 if is_first_iteration(i) & is_happy(i))
 
-    for i in range_gen:
-        if is_happy(i):
-            if verbose:
-                print(i)
-            count += 1
-
-    return count
+    return sum(happy_nums)
